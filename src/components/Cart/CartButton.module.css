@@ -1,0 +1,15 @@
+.button{
+    border-color: #1ad1b9;
+    color: #1ad1b9;
+}
+
+.button span{
+    margin: 0 0.5rem;
+}
+
+.badge{
+    background-color: #e31212;
+    border-radius: 30px;
+    padding: 0.15rem 1.25rem;
+    color: #fcf8f8;
+}
