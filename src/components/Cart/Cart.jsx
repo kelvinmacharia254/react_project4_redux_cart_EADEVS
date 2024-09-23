@@ -4,13 +4,17 @@ import Card from "../UI/Card.jsx";
 import {testData} from "../../testData.js";
 import CartItem from "./CartItem.jsx";
 
-const Cart = (props) => {
+// utilize redux store
+ import {useSelector} from "react-redux";
 
+const Cart = (props) => {
+    const cartItems = useSelector(state => state.cart.items);
+    console.log(cartItems);
     return(
         <Card className={classes.cart}>
             <h2>Your Shopping Cart</h2>
             <ul>
-                {testData.map((item, index) => (
+                {cartItems.map((item, index) => (
                     <CartItem
                         key={index}
                         id={item.id}

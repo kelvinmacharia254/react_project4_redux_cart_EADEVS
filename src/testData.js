@@ -21,7 +21,7 @@ export const testData =[
       title: "Coffee",
       quantity: 3,
       total: 10,
-      price: 30,
+      price: 2.5,
       description:"Your Favourite Coffee",
     }
 ]
