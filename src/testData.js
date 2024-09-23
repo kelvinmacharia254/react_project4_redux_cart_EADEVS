@@ -1,24 +1,27 @@
 import {nanoid} from 'nanoid';
-export const cartData =[
+export const testData =[
     {
       id: nanoid(),
       title: "Probiotics",
       quantity: 2,
       total: 25,
-      price: 12.50
+      price: 12.50,
+      description:"Your super digestive aid."
     },
     {
       id: nanoid(),
       title: "Sweets",
       quantity: 4,
       total: 20,
-      price: 5
+      price: 5,
+      description:"Your sweet tooth"
     },
     {
       id: nanoid(),
       title: "Coffee",
       quantity: 3,
       total: 10,
-      price: 30
+      price: 30,
+      description:"Your Favourite Coffee",
     }
 ]
