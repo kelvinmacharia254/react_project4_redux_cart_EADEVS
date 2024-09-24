@@ -9,9 +9,9 @@ const cartSlice = createSlice({
     reducers: {
         addItemToCart: (state, action) => {
             const newItem = action.payload;
-            // find if the newItem if in the cart
+            // find if the Item is in the cart
             const existingItem = state.items.find((item) => item.id === newItem.id);
-            state.totalQuantity++ // update quantity
+            state.totalQuantity++ // update cart overall quantity of unique items
             if(!existingItem){ // add item to cart if new
                 state.items.push({
                     id: newItem.id,
@@ -23,6 +23,20 @@ const cartSlice = createSlice({
             }else{ // update quantity and total price if the item is existing in the cart
                 existingItem.quantity = existingItem.quantity + 1;
                 existingItem.totalPrice = existingItem.totalPrice + newItem.price;
+            }
+        },
+        removeItemFromCart: (state, action) => {
+            const itemId = action.payload;
+            console.log(`cartSlice => itemId: ${itemId}`);
+            const existingItem  = state.items.find((item) => item.id === itemId);
+            console.log(`cartSlice => existingItem: ${existingItem}`);
+            console.log(`cartSlice => existingItem.quantity: ${existingItem.quantity}`);
+            state.totalQuantity--;  // update cart overall quantity of unique items
+            if(existingItem.quantity === 1){ // remove item completely if one is exist in the cart
+                state.items = state.items.filter((item) => item.id !== existingItem.id);
+            }else{ // reduce quantity by 1 if more than one
+                existingItem.quantity--;
+                existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
             }
         },
     },

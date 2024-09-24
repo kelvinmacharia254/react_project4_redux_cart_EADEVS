@@ -15,6 +15,12 @@ const CartItem = (props) => {
         }))
     }
 
+    function removeItemFromCart() {
+        dispatch(
+            cartActions.removeItemFromCart(id)
+        )
+    }
+
     return(
         <li className={classes.item}>
             <header>
@@ -28,7 +34,7 @@ const CartItem = (props) => {
                         x <span>{quantity}</span>
                     </div>
                     <div className={classes.actions}>
-                        <button onClick={null}>-</button>
+                        <button onClick={removeItemFromCart}>-</button>
                         <button onClick={addItemToCart}>+</button>
                     </div>
                 </div>

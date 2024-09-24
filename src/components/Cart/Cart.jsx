@@ -9,14 +9,6 @@ import CartItem from "./CartItem.jsx";
 
 const Cart = (props) => {
     const cartItems = useSelector(state => state.cart.items);
-    for(let item of cartItems){
-        console.log(`Cart component: id: ${item.id}`);
-        console.log(`Cart component: price: ${item.price}`);
-        console.log(`Cart component: quantity: ${item.quantity}`);
-        console.log(`Cart component: totalPrice: ${item.totalPrice}`);
-        console.log(`Cart component: title: ${item.title}`);
-    }
-
     return(
         <Card className={classes.cart}>
             <h2>Your Shopping Cart</h2>
