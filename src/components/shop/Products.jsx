@@ -1,7 +1,8 @@
 import classes from "./Products.module.css"
 import {testData} from "../../testData.js"
 import ProductItem from "./ProductItem.jsx";
-const Products = (props) => {
+const Products = () => {
+
   return (
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>

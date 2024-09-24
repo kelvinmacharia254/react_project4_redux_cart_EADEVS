@@ -10,7 +10,6 @@ const ProductItem = (props) => {
 
     // eslint-disable-next-line react/prop-types
     const { title, price, description, id } = props;
-
     function addItemToCart(){
         dispatch(
             cartActions.addItemToCart({
@@ -26,7 +25,7 @@ const ProductItem = (props) => {
             <Card>
                 <header>
                     <h3>{title}</h3>
-                    <div className={classes.price}>${price.toFixed(2)}</div>
+                    <div className={classes.price}>${price}</div>
                 </header>
                 <p>{description}</p>
                 <div className={classes.actions}>
