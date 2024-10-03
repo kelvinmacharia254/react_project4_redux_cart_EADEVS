@@ -6,7 +6,7 @@ import Notification from "./components/UI/Notification.jsx";
 
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
-import {sendCartData} from "./store/cartActions.js";
+import {sendCartData, fetchCartData} from "./store/cartActions.js";
 
 
 let isInitial = true;
@@ -16,6 +16,7 @@ function App() {
     const cart = useSelector(state => state.cart)
     const notification = useSelector(state => state.ui.notification)
 
+    // send cart data in redux store to firebase
     useEffect(() => {
         // don't fetch on initial render
         if (isInitial) {
@@ -28,6 +29,11 @@ function App() {
         }
 
     }, [dispatch, cart]);
+
+    // on initial loading, retrieve cart data from firebase db if any
+    useEffect(()=>{
+        dispatch(fetchCartData())
+    },[])
 
   return (
     <>
