@@ -16,12 +16,12 @@ export function sendCartData(cart){
             const response = await fetch(
                 "https://cart-82104-default-rtdb.firebaseio.com/cart.json",
                 {
-                    method:"PUT",
-                    body:JSON.stringify({
-                        items:cart.items,
-                        totalQuantity:cart.totalQuantity,
-                    })
-                }
+                        method:"PUT",
+                        body:JSON.stringify({
+                            items:cart.items,
+                            totalQuantity:cart.totalQuantity,
+                        })
+                    }
             )
             if(!response.ok){
                 throw new Error("sending cart data failed")
@@ -31,18 +31,20 @@ export function sendCartData(cart){
         try{
             await sendRequest()
             dispatch(
-            uiActions.showNotification({
-                status: "success",
-                title:"success",
-                message: "sent cart data successfully"
-                }))
-        }catch (error){
+                uiActions.showNotification({
+                    status: "success",
+                    title:"success",
+                    message: "sent cart data successfully"
+                })
+            )
+        } catch (error){
             dispatch(
             uiActions.showNotification({
                 status: "error",
                 title:"Error!",
                 message: "Sending cart data failed"
-                }))
+                })
+            )
         }
     }
 }

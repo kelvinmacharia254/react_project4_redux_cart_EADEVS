@@ -5,6 +5,7 @@ const cartSlice = createSlice({
     initialState:{
         items:[],
         totalQuantity:0,
+        changed: false
     },
     reducers: {
         addItemToCart: (state, action) => {
@@ -12,6 +13,7 @@ const cartSlice = createSlice({
             // find if the Item is in the cart
             const existingItem = state.items.find((item) => item.id === newItem.id);
             state.totalQuantity++ // update cart overall quantity of unique items
+            state.changed = true;
             if(!existingItem){ // add item to cart if new
                 state.items.push({
                     id: newItem.id,
@@ -27,11 +29,9 @@ const cartSlice = createSlice({
         },
         removeItemFromCart: (state, action) => {
             const itemId = action.payload;
-            console.log(`cartSlice => itemId: ${itemId}`);
             const existingItem  = state.items.find((item) => item.id === itemId);
-            console.log(`cartSlice => existingItem: ${existingItem}`);
-            console.log(`cartSlice => existingItem.quantity: ${existingItem.quantity}`);
             state.totalQuantity--;  // update cart overall quantity of unique items
+            state.changed = true;
             if(existingItem.quantity === 1){ // remove item completely if one is exist in the cart
                 state.items = state.items.filter((item) => item.id !== existingItem.id);
             }else{ // reduce quantity by 1 if more than one
